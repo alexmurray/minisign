@@ -1,0 +1,27 @@
+name: minisign
+base: core18
+version: git
+summary: Minisign is a dead simple tool to sign files and verify signatures.
+description: |
+  Minisign is a dead simple tool to sign files and verify signatures.
+
+  It is portable, lightweight, and uses the highly secure Ed25519 public-key signature system.
+
+grade: stable
+confinement: strict
+
+apps:
+  minisign:
+    command: minisign
+    plugs:
+      - home
+
+parts:
+  minisign:
+    plugin: cmake
+    source: .
+    build-packages:
+      - libsodium-dev
+      - pkg-config
+    stage-packages:
+      - libsodium23
